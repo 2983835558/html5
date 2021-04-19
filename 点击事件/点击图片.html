@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<div id="app">
+			<div v-html="message">
+				这是一个一级标题
+			</div>
+			<img src="./img/tianxian.gif" @click="show()">		
+		</div>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let v=new Vue({
+				el:'#app',
+				data:{message:'<h1>天线宝宝</h1>'},
+				methods:{
+					show(){
+						
+						if(event.clientX>65 && event.clientX<70 && event.clientY>130 && event.clientY<140){
+							alert("验证成功")
+						}else{
+							alert("当前X坐标为："+event.clientX +"，"+ "当前Y坐标为："+event.clientY)
+						}
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
