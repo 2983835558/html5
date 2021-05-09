@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<div id="app">
+			<div v-html="message">找茬游戏</div>
+			<center><img src="./img/meirenyu.jpg" @click="myFunction()"></center>
+			<center><h2>您找出了{{userNumber}} 处不同，得分为{{userScore}}分</center></h2>
+			<div v-if="userScore==3">
+				<center><h1>恭喜你本关游戏通过！</center></h1>
+			</div>
+		</div>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let v=new Vue({
+				el:'#app',
+				data:{
+					message:'<h1><center>美人鱼找茬游戏</center></h1><h2><center>请点击右边的图片，找出两张图的不同</center></h2>',
+					userNumber:0,  // 用户点击次数
+					userScore:0,
+					a:0,           
+					b:0,
+					c:0
+				},
+				methods:{
+					myFunction(){
+						if(v.userNumber==3){ // 判断是否已经找出3处不同
+							alert("恭喜你，游戏通过了！")		
+						}
+						else if(event.clientX>530 && event.clientX<570 && event.clientY>220 && event.clientY<240){
+							if(v.a==0){ //判断此处是否点击过-没有点击过-次数+1
+								alert("你真棒，找对了")
+								v.userNumber++;  // 用户点击次数+1
+								v.a++;
+								v.userScore++;
+							}
+							else{	//点击过-弹出此处已选过
+								alert("重复啦！再找找看")
+							}
+						}	
+						else if(event.clientX>600 && event.clientX<670 && event.clientY>200 && event.clientY<250){
+							if(v.b==0){ //判断此处是否点击过-没有点击过-次数+1
+								alert("你真棒，找对了")
+								v.userNumber++;  // 用户点击次数+1
+								v.b++;
+								v.userScore++;
+							}
+							else{	//点击过-弹出此处已选过
+								alert("重复啦！再找找看")
+							}
+						}
+						else if(event.clientX>630 && event.clientX<670 && event.clientY>280 && event.clientY<320){
+							if(v.c==0){ //判断此处是否点击过-没有点击过-次数+1
+								alert("你真棒，找对了")
+								v.userNumber++;  // 用户点击次数+1
+								v.c++;
+								v.userScore++;
+							}
+							else{	//点击过-弹出此处已选过
+								alert("重复啦！再找找看")
+							}
+						}
+						else {
+							alert("找错啦！")
+							alert("当前X坐标为："+event.clientX +"，"+ "当前Y坐标为："+event.clientY)
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
