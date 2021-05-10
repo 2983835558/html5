@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>猜数字小程序</h1>
+			正确答案是：{{keyNumber}}<br>
+			请输入你猜的数字：
+			<input type="text" v-model="userKey" @keyup.enter="show()"/><br>		
+		</div>
+		<script type="text/javascript" >
+			let v=new Vue({
+				el:"*#app",
+				data:{
+					userKey:'',
+					keyNumber:Math.floor(Math.random()*10),
+				},
+				methods:{
+					show(){
+						if(v.userKey==v.keyNumber){
+							alert("恭喜你，猜对啦！")	
+						}else if(v.userKey>v.keyNumber){
+							alert("猜大了！")
+						}else{
+							alert("猜小了")
+						}
+					}
+				}		
+			})
+		</script>
+	</body>
+</html>
